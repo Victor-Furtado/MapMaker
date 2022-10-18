@@ -2,6 +2,7 @@ import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core
 import { ModalsProvider } from '@mantine/modals';
 import { NotificationsProvider } from '@mantine/notifications';
 import { ReactNode, useState } from 'react';
+import { SelectTilesetModal } from '../components/modals/SelectTileset';
 
 interface MantineProps {
   children: ReactNode;
@@ -23,7 +24,12 @@ export default function MantineConfig(props: MantineProps) {
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-        <ModalsProvider>
+        <ModalsProvider
+          // modalProps={}
+          modals={{
+            SelectTilesetModal,
+          }}
+        >
           <NotificationsProvider position="bottom-center">{children}</NotificationsProvider>
         </ModalsProvider>
       </MantineProvider>

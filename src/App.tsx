@@ -1,30 +1,19 @@
-import { Stack, Text } from '@mantine/core';
+import { Text } from '@mantine/core';
 import { useShallowEffect } from '@mantine/hooks';
-import { openModal } from '@mantine/modals';
-import ColorSchemeToggler from './components/ColorSchemeToggler';
-import DropzoneButton from './components/DropZone';
+import { openContextModal } from '@mantine/modals';
 
 function App() {
   // const [lang, setLang] = useState(localStorage.getItem('i18nextLng'));
   // const { t } = useTranslation();
 
   useShallowEffect(() => {
-    openModal({
+    openContextModal({
+      withCloseButton: false,
+      closeOnEscape: false,
+      closeOnClickOutside: false,
+      modal: 'SelectTilesetModal',
       title: 'WELCOME TO TILEMAP',
-      children: (
-        <Stack>
-          <DropzoneButton />
-          <ColorSchemeToggler />
-          {/* <NativeSelect
-            data={Object.entries(availableLanguages).map(([value, label]) => ({
-              value,
-              label,
-            }))}
-            value={lang}
-            onChange={(e) => setLang(e.currentTarget.value)}
-          /> */}
-        </Stack>
-      ),
+      innerProps: {},
     });
   }, [{ a: 1 }]);
   return <Text>Welcome to Mantine!</Text>;
